@@ -3,10 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Logging
 Bundle-SymbolicName: org.globaltester.logging
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.osgi.framework;version="1.3.0",
- org.osgi.service.log;version="1.3.0",
- org.osgi.service.prefs;version="1.1.1"
+ org.osgi.service.log;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.globaltester.logging;uses:="org.globaltester.logging.filter,org.osgi.service.log,org.globaltester.logging.format",
  org.globaltester.logging.filter;uses:="org.osgi.service.prefs,org.osgi.service.log",

@@ -2,23 +2,15 @@ package org.globaltester.logging.filter;
 
 import java.util.Arrays;
 
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.service.log.LogEntry;
-import org.osgi.service.prefs.BackingStoreException;
-import org.osgi.service.prefs.Preferences;
 
 public class LevelFilter implements LogFilter{
 
 	private byte[] logLevels;
 
-	// place for persistent storage of filter data
-	Preferences preferences = InstanceScope.INSTANCE
-			.getNode("de.persosim.simulator.ui.utils.logging");
-	
 	// Constructor
 	public LevelFilter(byte[] logLevels) {
 		setLogLevels(logLevels);
-//		loadLogLevels();
 	}
 	
 	
@@ -31,21 +23,6 @@ public class LevelFilter implements LogFilter{
 		return logLevels;
 	}
 
-	
-	public void saveLogLevels() {
-		preferences.putByteArray("loglevels", logLevels);
-
-		try {
-			preferences.flush();
-		} catch (BackingStoreException e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	public void loadLogLevels() {
-		setLogLevels(preferences.getByteArray("loglevels", logLevels));
-	}
 	
 	@Override
 	public boolean logFilter(LogEntry entry) {
